@@ -1,0 +1,155 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "version":"1.0.0",
+    "title":"JobsNET",
+    "termsOfService":"http://swagger.io/terms/",
+    "license":{
+      "name":"Apache 2.0",
+      "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes":[
+    "http",
+    "https"
+  ],
+  "consumes":[
+    "application/json"
+  ],
+  "basePath":"/",
+  "paths":{
+    "/user":{
+      "post":{
+        "tags":[
+          "User"
+        ],
+        "summary":"Endpoint to create user",
+        "parameters":[
+          {
+            "name":"user",
+            "in":"body",
+            "description":"Data pass in body",
+            "required":true,
+            "schema":{
+              "type":"object",
+              "properties":{
+                "nome":{
+                  "type":"string"
+                },
+                "profissao":{
+                  "type":"string"
+                },
+                "identidade":{
+                  "type":"string"
+                },
+                "cpf":{
+                  "type":"string"
+                },
+                "email":{
+                  "type":"string"
+                },
+                "telefone":{
+                  "type":"string"
+                },
+                "dataDeNascimento":{
+                  "type":"string"
+                },
+                "corDaPele":{
+                  "type":"string"
+                },
+                "sexo":{
+                  "type":"string"
+                },
+                "cep":{
+                  "type":"string"
+                },
+                "logradouro":{
+                  "type":"string"
+                },
+                "numero":{
+                  "type":"string"
+                },
+                "bairro":{
+                  "type":"string"
+                },
+                "cidade":{
+                  "type":"string"
+                }
+              }
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Create user successful",
+            "schema":{
+              "message":"object",
+              "properties":{
+                "message":{
+                  "type":"string",
+                  "example":"Usuário criado com sucesso."
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Create user incorrect",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "type":"string",
+                  "example":"Não foi possível criar o usuário: ${error}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/location":{
+      "get":{
+        "tags":[
+          "Location"
+        ],
+        "summary":"Location to get address",
+        "parameters":[
+          {
+            "name":"cep",
+            "in":"path",
+            "description":"CEP pass in query params",
+            "required":true,
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"CEP é obrigatório!",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "cep":{
+                  "type":"string"
+                }
+              }
+            }
+          },
+          "400":{
+            "description":"Latitude and longitude don't valid",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "type":"string",
+                  "example":"CEP não encontrado, preencha o campo por favor."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
